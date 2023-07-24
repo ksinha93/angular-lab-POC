@@ -1,10 +1,15 @@
-<a [routerLink]="['./login']" *ngIf="!isUserValid">Login</a>&nbsp;
-<a [routerLink]="['./hello']">Menu</a>&nbsp;
-<a [routerLink]="['./custord']">Customer Order</a>
-<span style="padding-left:10px" *ngIf="isUserValid"
-  >Total Items: {{ totMenuCount }} Total Amount: {{ totAmount }}</span
->
-<router-outlet></router-outlet>
+<div class="ps-2">
+  <a [routerLink]="['./login']" *ngIf="!isUserValid">Login</a>&nbsp;
+  <a [routerLink]="['./hello']">Menu</a>&nbsp;
+  <a [routerLink]="['./custord']">Customer Order</a>
+  <a href="" (click)="onLogOut()" type="button" class="ps-2" *ngIf="isUserValid"
+    >Log Out</a
+  >
+  <span style="padding-left:10px" *ngIf="isUserValid"
+    >Total Items: {{ totMenuCount }} Total Amount: {{ totAmount }}</span
+  >
+  <router-outlet></router-outlet>
+</div>
 <!--<form [formGroup]='form'>
 	<div class="form-group">
 		<label for="username">Username</label>
