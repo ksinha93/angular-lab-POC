@@ -1,0 +1,52 @@
+<h1>{{ LoginMessage }}</h1>
+<div>
+  <div *ngFor="let item of MenuItems">
+    <input
+      type="checkbox"
+      [value]="item"
+      (change)="onCheckBoxSelect($event, item)"
+      [checked]="isChecked(item)"
+      *ngIf="LoginStatus"
+    />
+    <input
+      type="button"
+      value="+"
+      (click)="addItem(item)"
+      *ngIf="LoginStatus"
+    />
+    <input
+      type="text"
+      value=""
+      style="width:30px"
+      [(ngModel)]="item.itemQty"
+      *ngIf="LoginStatus"
+    />
+    <input
+      type="button"
+      value="-"
+      (click)="removeItem(item)"
+      *ngIf="LoginStatus"
+    />
+    {{ item.menuName }}-{{ item.menuPrice }}
+  </div>
+  <!-- <div [element-color]="elementColor">
+    <span>Menu 1</span>&nbsp; <span>88.0</span>&nbsp;
+    <span>
+      <input #Menu1 type="checkbox" (change)="onCheckBoxSelect($event)" />
+    </span>
+  </div>
+  <div [element-color]="elementColor">
+    <span>Menu 2</span>&nbsp; <span>90.0</span>&nbsp;
+    <span>
+      <input #Menu2 type="checkbox" (change)="onCheckBoxSelect($event)" />
+    </span>
+  </div>
+  <div [element-color]="elementColor">
+    <span>Menu 3</span>&nbsp; <span>46.0</span>&nbsp;
+    <span>
+      <input #Menu3 type="checkbox" (change)="onCheckBoxSelect($event)" />
+    </span>
+  </div> -->
+  <button type="button" (click)="getDataMessage()">Show</button>
+  <button type="button" (click)="getDataMessage()">Reset</button>
+</div>

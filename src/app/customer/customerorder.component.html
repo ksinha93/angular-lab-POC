@@ -1,0 +1,45 @@
+<form [formGroup]="OrderForm" (ngSubmit)="submitForm()" *ngIf="IsUserValid">
+  <div>
+    <label for="custName">First Name: </label>
+    <input type="text" formControlName="firstname" value="" />
+  </div>
+  <div>
+    <label for="custName">Last Name: </label>
+    <input type="text" formControlName="lastname" value="" />
+  </div>
+  <div>
+    <label for="ordDate"
+      >Order Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
+    >
+    <input type="text" formControlName="ordDate" value="" />
+  </div>
+  <div></div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+<table *ngIf="AllOrders.length > 0 && AllOrders[0].quantity > 0 && IsUserValid">
+  <tr>
+    <td style="padding-right:10px; border:1px solid black">Menu Name</td>
+    <td style="padding-right:10px;border:1px solid black">Price</td>
+    <td style="padding-right:10px;border:1px solid black">Quantity</td>
+    <td style="padding-right:10px;border:1px solid black">Amount</td>
+  </tr>
+  <tr *ngFor="let ord of AllOrders">
+    <td style="padding-right:10px; border:1px solid black">
+      {{ ord.menuName }}
+    </td>
+    <td style="padding-right:10px; border:1px solid black">
+      {{ ord.menuPrice }}
+    </td>
+    <td style="padding-right:10px; border:1px solid black">
+      {{ ord.quantity }}
+    </td>
+    <td style="padding-right:10px; border:1px solid black">
+      {{ ord.totAmount }}
+    </td>
+  </tr>
+</table>
+<div *ngIf="!IsUserValid">
+  <span>No Orders. Please login to place orders.</span>
+</div>

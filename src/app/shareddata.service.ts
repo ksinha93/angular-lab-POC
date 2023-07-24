@@ -1,0 +1,76 @@
+import { OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { MenuItem } from '../../menuItem';
+import { OrderItem } from '../../orderItem';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SharedData implements OnInit {
+  MenuList: MenuItem[];
+  OrderList: OrderItem[] = [];
+  constructor() {
+    this.MenuList = [
+      new MenuItem('1', 'Chicken Masala', '240.0', 0, 0),
+      new MenuItem('2', 'Chicken Butter Masala', '280.0', 0, 0),
+      new MenuItem('3', 'Paneer Masala', '220.0', 0, 0),
+      new MenuItem('4', 'Mix Veg', '200.0', 0, 0),
+    ];
+
+    this.menuItems = new BehaviorSubject<MenuItem[]>(this.MenuList);
+    this.orderItems = new BehaviorSubject<OrderItem[]>(this.OrderList);
+  }
+
+  ngOnInit(): void {}
+  private loginMessage = new BehaviorSubject<any>(false);
+  private menuCount = new BehaviorSubject<string>('0');
+  private totalAmount = new BehaviorSubject<string>('0');
+
+  private menuItems;
+  private orderItems;
+
+  sendLoginStatus(mesg) {
+    this.loginMessage.next(mesg);
+  }
+
+  getLoginStatus(): Observable<any> {
+    return this.loginMessage;
+  }
+
+  getMenuItems(): Observable<MenuItem[]> {
+    return this.menuItems;
+  }
+
+  sendMenuItems(menuItems: MenuItem[]) {
+    this.menuItems.next(menuItems);
+  }
+
+  getMenuCount(): Observable<string> {
+    return this.menuCount;
+  }
+
+  sendMenuCount(menuCnt: string) {
+    this.menuCount.next(menuCnt);
+  }
+
+  getTotalAmount(): Observable<string> {
+    return this.totalAmount;
+  }
+
+  sendTotalAmount(totAmt: string) {
+    this.totalAmount.next(totAmt);
+  }
+
+  getorderItems(): Observable<OrderItem[]> {
+    return this.orderItems;
+  }
+
+  sendOrderItems(orderItems: OrderItem[]) {
+    this.orderItems.next(orderItems);
+  }
+
+  clearData() {
+    this.loginMessage.next('');
+  }
+}

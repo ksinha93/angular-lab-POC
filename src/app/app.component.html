@@ -1,0 +1,25 @@
+<a [routerLink]="['./login']" *ngIf="!isUserValid">Login</a>&nbsp;
+<a [routerLink]="['./hello']">Menu</a>&nbsp;
+<a [routerLink]="['./custord']">Customer Order</a>
+<span style="padding-left:10px" *ngIf="isUserValid"
+  >Total Items: {{ totMenuCount }} Total Amount: {{ totAmount }}</span
+>
+<router-outlet></router-outlet>
+<!--<form [formGroup]='form'>
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input formControlName='username' id="username" type="text" class="form-control">
+		<div *ngIf="username.touched && username.touched" class="alert alert-danger">
+			<div *ngIf="username.hasError('required')"> You need to enter user name</div>
+			<div *ngIf="username.hasError('minlength')"> Min Length is {{ username.hasError('minLength')}}
+			</div>f
+			<div *ngIf="username.hasError('removeSpaceFromUserName')">
+				removeSpaceFromUserName </div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input formControlName='password' id="password" type="text" class="form-control">
+	</div>
+	<button class="btn btn-primary" type="submit">Sign Up</button>
+</form>-->
