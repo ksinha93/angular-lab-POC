@@ -36,6 +36,7 @@ export class CustomerOrderComponent {
     this.svcData.getorderItems().subscribe((l) => {
       this.AllOrders = l;
     });
+    
   }
 
   submitForm() {
