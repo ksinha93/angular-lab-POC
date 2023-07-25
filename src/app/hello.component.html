@@ -7,7 +7,10 @@
           <div class="card-body">
             <h5 class="card-title">{{ item.menuName }}</h5>
             <h6 class="card-subtitle">{{ item.menuName }}</h6>
-            <p class="card-text">The price is {{ item.menuPrice }}</p>
+            <p class="card-text">
+              The price is <i class="bi bi-currency-rupee"></i
+              >{{ item.menuPrice }}
+            </p>
             <hr />
             <input
               type="checkbox"
@@ -15,26 +18,29 @@
               (change)="onCheckBoxSelect($event, item)"
               [checked]="isChecked(item)"
               [hidden]="!LoginStatus"
+              class="form-check-input"
             />
-            <input
-              type="button"
-              value="+"
+            <button
               (click)="addItem(item)"
               [hidden]="!LoginStatus"
-            />
+              class="ms-2"
+            >
+              <span>
+                <i class="bi bi-plus-square"></i>
+              </span>
+            </button>
             <input
               type="text"
               value=""
               [(ngModel)]="item.itemQty"
               [hidden]="!LoginStatus"
-              style="width:10%;"
+              style="width:65%;"
             />
-            <input
-              type="button"
-              value="-"
-              (click)="removeItem(item)"
-              [hidden]="!LoginStatus"
-            />
+            <button (click)="removeItem(item)" [hidden]="!LoginStatus">
+              <span>
+                <i class="bi bi-file-minus"></i>
+              </span>
+            </button>
           </div>
         </div>
       </div>
