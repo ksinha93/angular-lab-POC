@@ -1,7 +1,7 @@
 import { Component, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { HelloComponent } from './hello.component';
 import { SharedData } from './shareddata.service';
 //import { UserNameValiditors } from './UserNameValditors';
@@ -17,7 +17,7 @@ export class AppComponent implements OnChanges {
   totAmount: string = '0';
   isUserValid: boolean = false;
 
-  constructor(private svcData: SharedData) {
+  constructor(private svcData: SharedData, private route: Router) {
     this.svcData.getLoginStatus().subscribe((l) => {
       this.isUserValid = l;
     });
@@ -32,4 +32,9 @@ export class AppComponent implements OnChanges {
   }
 
   ngOnChanges(): void {}
+  onLogOut(): void {
+    this.isUserValid = false;
+    this.svcData.sendLoginStatus(false);
+    this.route.navigateByUrl('./login');
+  }
 }

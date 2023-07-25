@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
@@ -8,7 +8,7 @@ import { SharedData } from '../shareddata.service';
   selector: 'login-form',
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnChanges {
   isUserValid: boolean = false;
   constructor(
     private svcData: SharedData,
@@ -43,5 +43,13 @@ export class LoginComponent {
     this.form.controls['username'].setValue('');
     this.form.controls['password'].setValue('');
     this.svcData.sendLoginStatus(false);
+  }
+
+  ngOnChanges(): void {
+    if (this.isUserValid == false) {
+      this.form.controls['username'].setValue('');
+      this.form.controls['password'].setValue('');
+      this.svcData.sendLoginStatus(false);
+    }
   }
 }
