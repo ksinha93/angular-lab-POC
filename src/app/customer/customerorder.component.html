@@ -1,24 +1,45 @@
-<form [formGroup]="OrderForm" (ngSubmit)="submitForm()" *ngIf="IsUserValid">
+<form
+  [formGroup]="OrderForm"
+  (ngSubmit)="submitForm()"
+  *ngIf="IsUserValid"
+  class="form-group"
+>
   <div>
     <label for="custName">First Name: </label>
-    <input type="text" formControlName="firstname" value="" />
+    <input
+      type="text"
+      formControlName="firstname"
+      value=""
+      class="form-control"
+    />
   </div>
   <div>
     <label for="custName">Last Name: </label>
-    <input type="text" formControlName="lastname" value="" />
+    <input
+      type="text"
+      formControlName="lastname"
+      value=""
+      class="form-control"
+    />
   </div>
   <div>
-    <label for="ordDate"
-      >Order Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
-    >
-    <input type="text" formControlName="ordDate" value="" />
+    <label for="ordDate">Order Date:</label>
+    <input
+      type="text"
+      formControlName="ordDate"
+      value=""
+      class="form-control"
+    />
   </div>
   <div></div>
   <div>
     <button type="submit">Submit</button>
   </div>
 </form>
-<table *ngIf="AllOrders.length > 0 && AllOrders[0].quantity > 0 && IsUserValid">
+<table
+  *ngIf="AllOrders.length > 0 && AllOrders[0].quantity > 0 && IsUserValid"
+  class="table table-success table-striped mt-2"
+>
   <tr>
     <td style="padding-right:10px; border:1px solid black">Menu Name</td>
     <td style="padding-right:10px;border:1px solid black">Price</td>
