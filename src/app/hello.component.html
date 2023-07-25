@@ -1,33 +1,48 @@
 <h1>{{ LoginMessage }}</h1>
 <div>
   <div *ngFor="let item of MenuItems">
-    <input
-      type="checkbox"
-      [value]="item"
-      (change)="onCheckBoxSelect($event, item)"
-      [checked]="isChecked(item)"
-      *ngIf="LoginStatus"
-    />
-    <input
-      type="button"
-      value="+"
-      (click)="addItem(item)"
-      *ngIf="LoginStatus"
-    />
-    <input
-      type="text"
-      value=""
-      style="width:30px"
-      [(ngModel)]="item.itemQty"
-      *ngIf="LoginStatus"
-    />
-    <input
-      type="button"
-      value="-"
-      (click)="removeItem(item)"
-      *ngIf="LoginStatus"
-    />
-    {{ item.menuName }}-{{ item.menuPrice }}
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-1">
+            <input
+              type="checkbox"
+              [value]="item"
+              (change)="onCheckBoxSelect($event, item)"
+              [checked]="isChecked(item)"
+              *ngIf="LoginStatus"
+            />
+          </div>
+          <div class="col-sm-1">
+            <input
+              type="button"
+              value="+"
+              (click)="addItem(item)"
+              *ngIf="LoginStatus"
+            />
+          </div>
+          <div class="col-sm-1">
+            <input
+              type="text"
+              value=""
+              style="width:30px"
+              [(ngModel)]="item.itemQty"
+              *ngIf="LoginStatus"
+            />
+          </div>
+          <div class="col-sm-1">
+            <input
+              type="button"
+              value="-"
+              (click)="removeItem(item)"
+              *ngIf="LoginStatus"
+              class="w-5"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">{{ item.menuName }} {{ item.menuPrice }}</div>
+    </div>
   </div>
   <!-- <div [element-color]="elementColor">
     <span>Menu 1</span>&nbsp; <span>88.0</span>&nbsp;
