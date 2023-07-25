@@ -1,50 +1,45 @@
 <h1>{{ LoginMessage }}</h1>
-<div>
-  <div *ngFor="let item of MenuItems">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-sm-1">
+<div class="container">
+  <div class="row row-cols-3 row-cols-md-3">
+    <div *ngFor="let item of MenuItems">
+      <div class="col mb-1">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.menuName }}</h5>
+            <h6 class="card-subtitle">{{ item.menuName }}</h6>
+            <p class="card-text">The price is {{ item.menuPrice }}</p>
+            <hr />
             <input
               type="checkbox"
               [value]="item"
               (change)="onCheckBoxSelect($event, item)"
               [checked]="isChecked(item)"
-              *ngIf="LoginStatus"
+              [hidden]="!LoginStatus"
             />
-          </div>
-          <div class="col-sm-1">
             <input
               type="button"
               value="+"
               (click)="addItem(item)"
-              *ngIf="LoginStatus"
+              [hidden]="!LoginStatus"
             />
-          </div>
-          <div class="col-sm-1">
             <input
               type="text"
               value=""
-              style="width:30px"
               [(ngModel)]="item.itemQty"
-              *ngIf="LoginStatus"
+              [hidden]="!LoginStatus"
+              style="width:10%;"
             />
-          </div>
-          <div class="col-sm-1">
             <input
               type="button"
               value="-"
               (click)="removeItem(item)"
-              *ngIf="LoginStatus"
-              class="w-5"
+              [hidden]="!LoginStatus"
             />
           </div>
         </div>
       </div>
-      <div class="col-sm-6">{{ item.menuName }} {{ item.menuPrice }}</div>
     </div>
-  </div>
-  <!-- <div [element-color]="elementColor">
+    <!-- <div [element-color]="elementColor">
     <span>Menu 1</span>&nbsp; <span>88.0</span>&nbsp;
     <span>
       <input #Menu1 type="checkbox" (change)="onCheckBoxSelect($event)" />
@@ -62,6 +57,7 @@
       <input #Menu3 type="checkbox" (change)="onCheckBoxSelect($event)" />
     </span>
   </div> -->
-  <button type="button" (click)="getDataMessage()">Show</button>
-  <button type="button" (click)="getDataMessage()">Reset</button>
+    <!--<button type="button" (click)="getDataMessage()">Show</button>
+    <button type="button" (click)="getDataMessage()">Reset</button>-->
+  </div>
 </div>
