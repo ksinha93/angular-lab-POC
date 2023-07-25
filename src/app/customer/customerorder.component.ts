@@ -25,7 +25,7 @@ export class CustomerOrderComponent {
     this.OrderForm = new FormGroup({
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
-      ordDate: new FormControl(''),
+      ordDate: new FormControl('', Validators.required),
     });
     this.getAllOrders();
   }
@@ -35,7 +35,6 @@ export class CustomerOrderComponent {
   getAllOrders() {
     this.svcData.getorderItems().subscribe((l) => {
       this.AllOrders = l;
-      console.log('all orders ' + l[0]?.quantity);
     });
   }
 
