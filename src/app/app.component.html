@@ -32,17 +32,13 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>-->
-        <li class="nav-item">
-          <span *ngIf="isUserValid" class="nav-item"
-            >Total Items: {{ totMenuCount }} Total Amount: {{ totAmount }}</span
-          >
-        </li>
       </ul>
+      <li class="nav-item list-unstyled me-2"></li>
       <li class="nav-item list-unstyled me-2">
         <button
           type="button"
           [routerLink]="['./login']"
-          class="nav-link"
+          class="btn btn-danger nav-link"
           *ngIf="!isUserValid"
         >
           Login
@@ -52,7 +48,7 @@
         <button
           (click)="onLogOut()"
           type="button"
-          class="nav-link"
+          class="btn btn-danger nav-link"
           *ngIf="isUserValid"
         >
           Log Out
@@ -70,7 +66,16 @@
     </div>
   </div>
 </nav>
+<div class="float-end me-3">
+  <span *ngIf="isUserValid" style="font-size:12px" class="me-1">{{
+    totMenuCount
+  }}</span>
+  <span *ngIf="isUserValid" style="font-size:12px" class="me-4"
+    ><i class="bi bi-currency-rupee"></i>{{ totAmount }}</span
+  >
+  <span style="font-size:12px">Welcome Guest</span>
+</div>
 
-<div class="container">
+<div class="container mt-4">
   <router-outlet></router-outlet>
 </div>
