@@ -18,6 +18,7 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
   elementColor: string = '';
   MenuItems: MenuItem[];
   orderItems: OrderItem[] = [];
+  filteredItems: MenuItem[] = [];
   itemQty: number = 0;
   private GrossAmount: any = 0;
   private GrossItems: any = 0;
@@ -28,26 +29,14 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
         this.LoginStatus = l;
       });
 
+      //this.getFilteredAndMenuItems();
+      this.svcData.getMenuItems().subscribe((m) => {
+        this.MenuItems = m;
+      });
+
       this.svcData.getFilteredList().subscribe((f) => {
         if (f && f.length > 0) {
-          this.svcData.getMenuItems().subscribe((m) => {
-            this.MenuItems = f;
-            this.GrossAmount =
-              this.GrossAmount +
-              this.MenuItems.reduce((a, b) => a + b.itemAmount, 0);
-            this.GrossItems =
-              this.GrossItems +
-              this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
-          });
-        } else {
-          this.svcData.getMenuItems().subscribe((m) => {
-            this.MenuItems = m;
-            this.GrossAmount = this.MenuItems.reduce(
-              (a, b) => a + b.itemAmount,
-              0
-            );
-            this.GrossItems = this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
-          });
+          this.MenuItems = f;
         }
       });
 
@@ -106,12 +95,25 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
 
   addItem(item): void {
     item.itemQty = item.itemQty + 1;
+    this.svcData.getTotalAmount().subscribe((t) => {
+      this.GrossAmount = t;
+    });
+    this.svcData.getMenuCount().subscribe((c) => {
+      this.GrossItems = parseInt(c);
+    });
     this.GrossItems = this.GrossItems + 1;
     const totamt = item.itemQty * item.menuPrice;
     item.itemAmount = totamt;
     this.GrossAmount = parseInt(this.GrossAmount) + parseInt(item.menuPrice);
     this.svcData.sendMenuCount(this.GrossItems);
     this.svcData.sendTotalAmount(this.GrossAmount.toString());
+    let index = this.orderItems.findIndex((o) => o.menuName === item.menuName);
+    if (index > -1) {
+      let o = this.orderItems[index];
+      o.quantity = o.quantity + 1;
+      o.totAmount = o.totAmount + parseInt(item.menuPrice);
+      this.svcData.sendOrderItems(this.orderItems);
+    }
   }
 
   removeItem(item): void {

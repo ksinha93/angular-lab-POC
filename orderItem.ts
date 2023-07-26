@@ -1,14 +1,14 @@
 export class OrderItem {
   menuName: string;
   menuPrice: string;
-  quantity: string;
+  quantity: number;
   totAmount: number;
   itemChecked: boolean;
 
   constructor(
     private mName: string,
     private mPrice: string,
-    private mQty: string,
+    private mQty: number,
     private mAmt: number,
     private itmChecked: boolean
   ) {
