@@ -29,10 +29,26 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
         this.LoginStatus = l;
       });
 
-      this.svcData.getMenuItems().subscribe((m) => {
-        this.MenuItems = m;
-        this.GrossAmount = this.MenuItems.reduce((a, b) => a + b.itemAmount, 0);
-        this.GrossItems = this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
+      this.svcData.getFilteredList().subscribe((f) => {
+        if (f && f.length > 0) {
+          this.svcData.getMenuItems().subscribe((m) => {
+            this.MenuItems = f;
+            this.GrossAmount = this.MenuItems.reduce(
+              (a, b) => a + b.itemAmount,
+              0
+            );
+            this.GrossItems = this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
+          });
+        } else {
+          this.svcData.getMenuItems().subscribe((m) => {
+            this.MenuItems = m;
+            this.GrossAmount = this.MenuItems.reduce(
+              (a, b) => a + b.itemAmount,
+              0
+            );
+            this.GrossItems = this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
+          });
+        }
       });
 
       this.svcData.getorderItems().subscribe((o) => {

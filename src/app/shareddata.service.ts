@@ -10,6 +10,8 @@ import { OrderItem } from '../../orderItem';
 export class SharedData implements OnInit {
   MenuList: MenuItem[];
   OrderList: OrderItem[] = [];
+  FilteredList: MenuItem[] = [];
+
   constructor() {
     this.MenuList = [
       new MenuItem('1', 'Chicken Masala', '240.0', 0, 0),
@@ -26,7 +28,7 @@ export class SharedData implements OnInit {
   private loginMessage = new BehaviorSubject<any>(false);
   private menuCount = new BehaviorSubject<string>('0');
   private totalAmount = new BehaviorSubject<string>('0');
-
+  private filteredList = new BehaviorSubject<MenuItem[]>(null);
   private menuItems;
   private orderItems;
 
@@ -68,6 +70,14 @@ export class SharedData implements OnInit {
 
   sendOrderItems(orderItems: OrderItem[]) {
     this.orderItems.next(orderItems);
+  }
+
+  getFilteredList(): Observable<MenuItem[]> {
+    return this.filteredList;
+  }
+
+  sendFilteredList(menuItems: MenuItem[]) {
+    this.filteredList.next(menuItems);
   }
 
   clearData() {
