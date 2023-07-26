@@ -5,7 +5,6 @@ import { Route, Router } from '@angular/router';
 import { MenuItem } from 'menuItem';
 import { HelloComponent } from './hello.component';
 import { SharedData } from './shareddata.service';
-//import { UserNameValiditors } from './UserNameValditors';
 
 @Component({
   selector: 'my-app',

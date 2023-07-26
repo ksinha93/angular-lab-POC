@@ -18,8 +18,6 @@ export class CustomerOrderComponent {
   SharedMessage: string = '';
   constructor(private svcCust: CustomerService, private svcData: SharedData) {
     this.svcData.getLoginStatus().subscribe((s) => {
-      //this.IsUserValid = s;
-      console.log('Customer Order ' + s);
       this.IsUserValid = s;
     });
     this.OrderForm = new FormGroup({
@@ -36,7 +34,6 @@ export class CustomerOrderComponent {
     this.svcData.getorderItems().subscribe((l) => {
       this.AllOrders = l;
     });
-    
   }
 
   submitForm() {
