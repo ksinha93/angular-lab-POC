@@ -1,11 +1,14 @@
-<div class="container-fluid">
-  <div class="row row-cols-3 row-cols-md-3">
+<div
+  class="container-fluid border border-3 border-info"
+  style="background-color:darkred"
+>
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3">
     <div *ngFor="let item of MenuItems">
       <div class="col mb-1">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.menuName }}</h5>
-            <h6 class="card-subtitle">{{ item.menuName }}</h6>
+        <div class="card h-100" style="background-color:darkgreen">
+          <div class="card-body" style="color:white;font-weight:bold">
+            <h5 class="card-title fs-sm fs-md">{{ item.menuName }}</h5>
+            <h6 class="card-subtitle fs-sm fs-md">{{ item.menuName }}</h6>
             <p class="card-text">
               The price is <i class="bi bi-currency-rupee"></i
               >{{ item.menuPrice }}

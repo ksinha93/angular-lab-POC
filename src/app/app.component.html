@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg" style="background-color:darkred">
   <div class="container-fluid">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
     <button
@@ -26,7 +26,7 @@
         <button
           type="button"
           [routerLink]="['./login']"
-          class="btn btn-danger nav-link"
+          class="btn btn-primary nav-link"
           *ngIf="!isUserValid"
         >
           Login
@@ -36,41 +36,42 @@
         <button
           (click)="onLogOut()"
           type="button"
-          class="btn btn-danger nav-link"
+          class="btn btn-primary nav-link"
           *ngIf="isUserValid"
         >
           Log Out
         </button>
       </li>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          #search
-        />
-        <button
-          class="btn btn-outline-success"
-          type="button"
-          (click)="SearchMenu(search.value)"
-        >
-          Search
-        </button>
-      </form>
     </div>
+    <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        #search
+      />
+      <button
+        class="btn bg-success"
+        type="button"
+        (click)="SearchMenu(search.value)"
+      >
+        Search
+      </button>
+    </form>
   </div>
 </nav>
-<div class="float-end me-3">
-  <span *ngIf="isUserValid" style="font-size:12px" class="me-1">{{
-    totMenuCount
-  }}</span>
-  <span *ngIf="isUserValid" style="font-size:12px" class="me-4"
+<div class="container-fluid me-3">
+  <span class="float-end fs-sm fs-md">Welcome Guest</span>
+
+  <span *ngIf="isUserValid" class="float-end fs-sm fs-md me-4"
     ><i class="bi bi-currency-rupee"></i>{{ totAmount }}</span
   >
-  <span style="font-size:12px">Welcome Guest</span>
+  <span *ngIf="isUserValid" class="float-end fs-sm fs-md me-2">{{
+    totMenuCount
+  }}</span>
 </div>
 
-<div class="container mt-4">
+<div class="container-fluid mt-4">
   <router-outlet></router-outlet>
 </div>

@@ -18,6 +18,12 @@ export class SharedData implements OnInit {
       new MenuItem('2', 'Chicken Butter Masala', '280.0', 0, 0),
       new MenuItem('3', 'Paneer Masala', '220.0', 0, 0),
       new MenuItem('4', 'Mix Veg', '200.0', 0, 0),
+      new MenuItem('5', 'Paneer Butter Masala', '280.0', 0, 0),
+      new MenuItem('6', 'Paneer Kadai', '230.0', 0, 0),
+      new MenuItem('7', 'Paneer Tawa', '230.0', 0, 0),
+      new MenuItem('8', 'Sahi Paneer', '250.0', 0, 0),
+      new MenuItem('9', 'Paneer Kolhapuri', '260.0', 0, 0),
+      new MenuItem('10', 'Mushroom Masala', '220.0', 0, 0),
     ];
 
     this.menuItems = new BehaviorSubject<MenuItem[]>(this.MenuList);
