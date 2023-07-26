@@ -25,7 +25,6 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
   constructor(private svcData: SharedData) {
     try {
       this.svcData.getLoginStatus().subscribe((l) => {
-        console.log('hello ' + l);
         this.LoginStatus = l;
       });
 
@@ -33,11 +32,12 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
         if (f && f.length > 0) {
           this.svcData.getMenuItems().subscribe((m) => {
             this.MenuItems = f;
-            this.GrossAmount = this.MenuItems.reduce(
-              (a, b) => a + b.itemAmount,
-              0
-            );
-            this.GrossItems = this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
+            this.GrossAmount =
+              this.GrossAmount +
+              this.MenuItems.reduce((a, b) => a + b.itemAmount, 0);
+            this.GrossItems =
+              this.GrossItems +
+              this.MenuItems.reduce((a, b) => a + b.itemQty, 0);
           });
         } else {
           this.svcData.getMenuItems().subscribe((m) => {

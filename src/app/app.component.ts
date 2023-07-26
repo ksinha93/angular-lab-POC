@@ -46,14 +46,11 @@ export class AppComponent implements OnChanges {
   }
 
   SearchMenu(item: string): void {
-    //console.log(item);
-    //console.log(this.menuItems);
     this.filteredMenus = this.menuItems.filter((menu) => {
       return menu?.menuName.toLowerCase().includes(item.toLowerCase());
     });
 
     this.svcData.sendFilteredList(this.filteredMenus);
-    //console.log(this.filteredMenus);
     this.filteredMenus?.forEach((m) => {
       console.log(m.menuName);
     });
