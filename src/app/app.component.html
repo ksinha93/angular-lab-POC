@@ -15,10 +15,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a [routerLink]="['./hello']" class="nav-link">Menu</a>
+          <a
+            [routerLink]="['./hello']"
+            class="nav-link"
+            style="color:yellow;font-weight:bold"
+            >Menu</a
+          >
         </li>
         <li class="nav-item">
-          <a [routerLink]="['./custord']" class="nav-link">Customer Order</a>
+          <a
+            [routerLink]="['./custord']"
+            class="nav-link"
+            style="color:yellow;font-weight:bold"
+            >Customer Order</a
+          >
         </li>
       </ul>
       <li class="nav-item list-unstyled me-2"></li>
@@ -28,6 +38,7 @@
           [routerLink]="['./login']"
           class="btn btn-primary nav-link"
           *ngIf="!isUserValid"
+          style="color:yellow;font-weight:bold"
         >
           Login
         </button>
@@ -38,6 +49,7 @@
           type="button"
           class="btn btn-primary nav-link"
           *ngIf="isUserValid"
+          style="color:yellow;font-weight:bold"
         >
           Log Out
         </button>
