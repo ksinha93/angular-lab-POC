@@ -2,9 +2,10 @@ import { Output } from '@angular/core';
 import { AfterViewInit, OnChanges } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from '../../menuItem';
 import { OrderItem } from '../../orderItem';
-import { SharedData } from './shareddata.service';
+import { SharedData } from './services/shareddata.service';
 
 @Component({
   selector: 'hello',
@@ -23,7 +24,7 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
   private GrossAmount: any = 0;
   private GrossItems: any = 0;
 
-  constructor(private svcData: SharedData) {
+  constructor(private svcData: SharedData, private route: Router) {
     try {
       this.svcData.getLoginStatus().subscribe((l) => {
         this.LoginStatus = l;
@@ -137,5 +138,9 @@ export class HelloComponent implements OnInit, OnChanges, AfterViewInit {
       return this.orderItems[index].itemChecked;
     }
     return false;
+  }
+
+  placeOrder(): void {
+    this.route.navigateByUrl('/custord');
   }
 }

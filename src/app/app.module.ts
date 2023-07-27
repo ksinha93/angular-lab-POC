@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { SharedData } from './shareddata.service';
+import { SharedData } from './services/shareddata.service';
 import { CustomerOrderComponent } from './customer/customerorder.component';
 import { CustomerService } from './services/customer.service';
 import { LoginService } from './services/login.service';

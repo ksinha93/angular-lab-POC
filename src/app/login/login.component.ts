@@ -2,7 +2,7 @@ import { Component, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
-import { SharedData } from '../shareddata.service';
+import { SharedData } from '../services/shareddata.service';
 
 @Component({
   selector: 'login-form',

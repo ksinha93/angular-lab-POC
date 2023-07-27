@@ -1,8 +1,9 @@
 import { OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { MenuItem } from '../../../menuItem';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { MenuItem } from '../../menuItem';
-import { OrderItem } from '../../orderItem';
+
+import { OrderItem } from 'orderItem';
 
 @Injectable({
   providedIn: 'root',

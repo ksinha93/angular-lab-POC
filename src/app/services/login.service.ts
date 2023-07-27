@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SharedData } from '../shareddata.service';
+import { SharedData } from './shareddata.service';
 
 @Injectable({
   providedIn: 'root',

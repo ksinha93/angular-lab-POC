@@ -21,10 +21,7 @@
               [checked]="isChecked(item)"
               class="form-check-input col-xs-3 col-md-3"
             />
-            <button
-              (click)="addItem(item)"
-              class="ms-2 col-xs-1 col-md-1"
-            >
+            <button (click)="addItem(item)" class="ms-2 col-xs-1 col-md-1">
               <span>
                 <i class="bi bi-plus-square"></i>
               </span>
@@ -35,10 +32,7 @@
               [(ngModel)]="item.itemQty"
               class="col-xs-1 col-sm-3 col-md-9"
             />
-            <button
-              (click)="removeItem(item)"
-              class="col-xs-1 col-md-1"
-            >
+            <button (click)="removeItem(item)" class="col-xs-1 col-md-1">
               <span class="col-xs-1 col-md-1">
                 <i class="bi bi-file-minus"></i>
               </span>
@@ -48,4 +42,5 @@
       </div>
     </div>
   </div>
+  <button type="button" class="bg-success" (click)="placeOrder()">Place Order</button>
 </div>

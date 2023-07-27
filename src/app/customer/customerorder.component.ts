@@ -6,8 +6,9 @@ import {
   FormsModule,
   Validators,
 } from '@angular/forms';
-import { SharedData } from '../shareddata.service';
+
 import { OrderItem } from '../../../orderItem';
+import { SharedData } from '../services/shareddata.service';
 
 @Component({
   selector: 'cust-ord',
@@ -21,8 +22,11 @@ export class CustomerOrderComponent {
       this.IsUserValid = s;
     });
     this.OrderForm = new FormGroup({
-      firstname: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      mobileNumber: new FormControl('', Validators.required),
+      emailId: new FormControl(''),
+      address: new FormControl('', Validators.required),
       ordDate: new FormControl('', Validators.required),
     });
     this.getAllOrders();
@@ -36,15 +40,17 @@ export class CustomerOrderComponent {
     });
   }
 
-  submitForm() {
-    const ord = {
-      firstname: this.OrderForm.controls['firstname'].value,
-      lastname: this.OrderForm.controls['lastname'].value,
-      ordDate: this.OrderForm.controls['ordDate'].value,
+  submitForm(ordForm) {
+    const custDetails = {
+      firstName: ordForm.firstName,
+      lastName: ordForm.lastName,
+      mobileNumber: ordForm.mobileNumber,
+      emailId: ordForm.emailId,
+      address: ordForm.address,
     };
 
-    this.svcCust.saveOrder(ord);
+    //this.svcCust.saveOrder(ord);
 
-    this.getAllOrders();
+    //this.getAllOrders();
   }
 }

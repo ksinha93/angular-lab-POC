@@ -1,0 +1,12 @@
+{
+  "customerDetsils": [
+    {
+      "customerId": "",
+      "firstName": "",
+      "lastName": "",
+      "mobileNumber": "",
+      "emailId": "",
+      "address": ""
+    }
+  ]
+}

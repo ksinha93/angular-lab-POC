@@ -2,9 +2,9 @@ import { Component, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Route, Router } from '@angular/router';
-import { MenuItem } from 'menuItem';
+import { MenuItem } from '../menuItem';
 import { HelloComponent } from './hello.component';
-import { SharedData } from './shareddata.service';
+import { SharedData } from './services/shareddata.service';
 
 @Component({
   selector: 'my-app',
