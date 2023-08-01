@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterContentChecked, Component } from '@angular/core';
 import { CustomerService } from '../services/customer.service';
 import {
   FormControl,
@@ -9,14 +9,16 @@ import {
 
 import { OrderItem } from '../../../orderItem';
 import { SharedData } from '../services/shareddata.service';
-import {PreviewComponent} from '../order/preview.component';
-
+import { PreviewComponent } from '../order/preview.component';
+import { AfterContentInit } from '@angular/core';
 
 @Component({
   selector: 'cust-ord',
   templateUrl: './customerorder.component.html',
 })
-export class CustomerOrderComponent {
+export class CustomerOrderComponent
+  implements AfterContentInit, AfterContentChecked
+{
   IsUserValid: boolean = false;
   SharedMessage: string = '';
   constructor(private svcCust: CustomerService, private svcData: SharedData) {
@@ -32,6 +34,12 @@ export class CustomerOrderComponent {
       ordDate: new FormControl('', Validators.required),
     });
     this.getAllOrders();
+  }
+  ngAfterContentChecked(): void {
+    console.log('checked');
+  }
+  ngAfterContentInit(): void {
+    console.log('init');
   }
   AllOrders: OrderItem[] = [];
   OrderForm: FormGroup;
