@@ -103,7 +103,7 @@
     Preview Order
   </button>
 </div>
-<div>
+<div *ngIf="!OrderForm.invalid">
   <prev-ord></prev-ord>
 </div>
 <div *ngIf="!IsUserValid">

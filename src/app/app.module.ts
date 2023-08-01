@@ -11,6 +11,7 @@ import { CustomerOrderComponent } from './customer/customerorder.component';
 import { CustomerService } from './services/customer.service';
 import { LoginService } from './services/login.service';
 import { ElementColorDirective } from './elementColor.directive';
+import { PreviewComponent } from './order/preview.component';
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -32,6 +33,7 @@ const routes: Route[] = [
     LoginComponent,
     CustomerOrderComponent,
     ElementColorDirective,
+    PreviewComponent,
   ],
   bootstrap: [AppComponent],
   providers: [SharedData, CustomerService, LoginService],

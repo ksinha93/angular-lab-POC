@@ -9,12 +9,15 @@ import { SharedData } from '../services/shareddata.service';
 export class PreviewComponent {
   OrderItems: OrderItem[] = [];
   CustomerDetails: CustomerDetails;
+  IsUserLogged: boolean = false;
 
-  constructor(private svcData:SharedData) {
-    this.svcData.getorderItems().subscribe(l=>{
-      this.OrderItems=l;
+  constructor(private svcData: SharedData) {
+    this.svcData.getorderItems().subscribe((l) => {
+      this.OrderItems = l;
     });
 
-    
+    this.svcData.getLoginStatus().subscribe((l) => {
+      this.IsUserLogged = l;
+    });
   }
 }
