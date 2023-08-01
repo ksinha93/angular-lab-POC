@@ -49,19 +49,18 @@
       class="form-control"
     />
   </div>
-  <div class="mt-2">
-    <button
-      type="submit"
-      *ngIf="!OrderForm.invalid"
-      class="btn bg-success"
-      style="color:white;"
-    >
-      Submit
-    </button>
+  <div>
+    <label for="address">Order Date: </label>
+    <input
+      type="text"
+      formControlName="ordDate"
+      value=""
+      class="form-control"
+    />
   </div>
 </form>
 <table
-  *ngIf="AllOrders.length > 0 && AllOrders[0].quantity > 0 && IsUserValid"
+  *ngIf="AllOrders.length > 0 && IsUserValid"
   class="table table-success table-striped mt-2"
 >
   <tr>
@@ -103,6 +102,9 @@
   >
     Preview Order
   </button>
+</div>
+<div>
+  <prev-ord></prev-ord>
 </div>
 <div *ngIf="!IsUserValid">
   <span>No Orders. Please login to place orders.</span>

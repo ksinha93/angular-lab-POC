@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CustomerDetails } from 'customerDetails';
 import { OrderItem } from '../../../orderItem';
 import { SharedData } from '../services/shareddata.service';
-
 @Component({
   selector: 'prev-ord',
   templateUrl: './preview.component.html',

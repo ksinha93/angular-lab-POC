@@ -9,6 +9,8 @@ import {
 
 import { OrderItem } from '../../../orderItem';
 import { SharedData } from '../services/shareddata.service';
+import {PreviewComponent} from '../order/preview.component';
+
 
 @Component({
   selector: 'cust-ord',
